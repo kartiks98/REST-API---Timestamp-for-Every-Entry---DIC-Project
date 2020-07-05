@@ -55,4 +55,4 @@ api.add_resource(NameList, '/names')
 # api.add_resource(UserLogout,'/logout')
 
 db.init_app(app)
-app.run(port=5000)
+# app.run(port=5000)
