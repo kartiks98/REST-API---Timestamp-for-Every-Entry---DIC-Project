@@ -1,0 +1,6 @@
+Flask
+Flask-RESTful
+Flask-SQLAlchemy
+gunicorn
+psycopg2
+flask_cors
