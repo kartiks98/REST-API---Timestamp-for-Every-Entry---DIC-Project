@@ -3,7 +3,10 @@ from flask_restful import Resource
 # from flask_jwt_extended import jwt_required
 from models.timestamps_m import NameModel
 
-from datetime import datetime
+# from datetime import datetime
+# from datetime import timezone
+import datetime
+import pytz
 
 class Name(Resource):
     # parser = reqparse.RequestParser()
@@ -26,10 +29,11 @@ class Name(Resource):
         return {'message': 'Item not found'}, 404
 
     def post(self, name):
-        
-        t_s = str(datetime.now())
+        timezone = pytz.timezone("Asia/Calcutta")
+        ts = str(datetime.datetime.now(timezone))
+        t_s = ts.split('+')
 
-        item = NameModel(name, t_s)
+        item = NameModel(name, t_s[0])
 
         try:
             item.save_to_db()
